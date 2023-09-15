@@ -22,3 +22,8 @@ void Sum::Show()
 {
 	cout << a_sum << endl;
 }
+
+void::InfoAllSum()
+{
+	//cout << "All Sum: " << a_sum << endl;
+}

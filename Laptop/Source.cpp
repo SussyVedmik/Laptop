@@ -18,6 +18,9 @@ class Laptop
 public:
 	Laptop(const char* x1, double y1) :cpu(x1, y1), ssd(x1, y1), vd(x1, y1), ram(x1, y1)
 	{
+
+		Laptop(const Laptop & cpu);
+
 		cpu.Input();
 		cpu.Print();
 
@@ -37,7 +40,7 @@ int main()
 {
 	//       ->        cout << "all sum: " << Sum::a_sum << endl;
 
-
+	cpu.Print();
 
 	/*CPU a("", 0);
 

@@ -9,6 +9,7 @@ public:
 
 	~Sum();
 
+	static void InfoAllSum();
 	void Show();
 };
 
