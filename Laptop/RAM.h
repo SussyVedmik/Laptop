@@ -1,29 +1,24 @@
 #pragma once
 class RAM
 {
-    char* model;
-    double price;
-
+private:
+	char* name;
+	char* type;
+	char* speed;
+	double price;
 public:
+	RAM();
+	RAM(const char* n, const char* t, const char* s, double pr4);
+	RAM(const RAM& obj4);
+	void Print();
+	~RAM();
 
-    RAM();
-    RAM(const char* m, double pr);
-    RAM(const RAM& ram)
-    {
-        model = new char[strlen(ram.model) + 1];
-        strcpy_s(model, strlen(ram.model) + 1, ram.model);
-        price = ram.price;
-    }
-    ~RAM();
-    void Input();
-    void Print();
-
-
-    char* GetModel();
-    double GetPrice();
-
-
-    void SetModel(const char* m);
-    void SetPrice(double pr);
+	char* GetName() const;
+	char* GetType() const;
+	char* GetSpeed() const;
+	double GetPrice() const;
+	void SetName(char* n);
+	void SetType(char* t);
+	void SetSpeed(char* s);
+	void SetPrice(double pr4);
 };
-

@@ -1,7 +1,7 @@
 #pragma once
 class Sum
 {
-	double a_sum;
+	/*double a_sum;
 public:
 	static double s_AllSum;
 
@@ -11,5 +11,6 @@ public:
 
 	static void InfoAllSum();
 	void Show();
+	*/
 };
 

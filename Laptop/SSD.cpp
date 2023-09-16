@@ -1,65 +1,68 @@
+#include <iostream>
 #include "SSD.h"
-#include<iostream>
 using namespace std;
 
-
-SSD::SSD()
-{
-	model = nullptr;
+SSD::SSD() {
+	name = nullptr;
+	speed = nullptr;
 	price = 0.0;
+	cout << "Constructor by default\n";
 }
-
-SSD::SSD(const char* m, double pr)
+SSD::SSD(const char* n, const char* s, double pr2) {
+	name = new char[strlen(n) + 1];
+	strcpy_s(name, strlen(n) + 1, n);
+	speed = new char[strlen(s) + 1];
+	strcpy_s(speed, strlen(s) + 1, s);
+	price = pr2;
+}
+SSD::SSD(const SSD& obj2)
 {
-	this->model = new char[strlen(m) + 1];
-	strcpy_s(this->model, strlen(m) + 1, m);
-
-	this->price = pr;
+	name = new char[strlen(obj2.name) + 1];
+	strcpy_s(name, strlen(obj2.name) + 1, obj2.name);
+	speed = new char[strlen(obj2.speed) + 1];
+	strcpy_s(speed, strlen(obj2.speed) + 1, obj2.speed);
+	price = obj2.price;
 }
-
-SSD::~SSD()
-{
-	delete[]this->model;
-}
-
-void SSD::Input()
-{
-	cout << endl;
-	cout << "Enter SSD model: ";
-	cin >> model;
-	cout << endl;
-	cout << "Enter SSD price: ";
-	cin >> price;
-}
-
 void SSD::Print()
 {
-	cout << endl;
-	cout << "Model - " << model << endl;
-	cout << "Price - " << price << endl;
+	cout << "Name: " << name << "\tSpeed: " << speed << "\tPrice: " << price << endl;
+}
+SSD::~SSD() {
+	delete[] name;
+	delete[] speed;
+	cout << "Destructor\n";
 }
 
-char* SSD::GetModel()
-{
-	return model;
+char* SSD::GetName() const {
+	return name;
 }
-
-double SSD::GetPrice()
-{
-	return 0.0;
+char* SSD::GetSpeed() const {
+	return speed;
 }
-
-void SSD::SetModel(const char* m)
-{
-	if (model != nullptr)
-	{
-		cout << model << "... delete\n";
-		delete[]model;
+double SSD::GetPrice() const {
+	return price;
+}
+void SSD::SetName(char* n) {
+	if (name != nullptr) {
+		cout << name << "...delete\n";
+		delete[] name;
 	}
-	this->model = new char[strlen(m) + 1];
-	strcpy_s(model, strlen(m) + 1, m);
+	name = new char[strlen(n) + 1];
+	strcpy_s(name, strlen(n) + 1, n);
 }
-
-void SSD::SetPrice(double pr)
-{
+void SSD::SetSpeed(char* s) {
+	if (speed != nullptr) {
+		cout << speed << "...delete\n";
+		delete[] speed;
+	}
+	speed = new char[strlen(s) + 1];
+	strcpy_s(name, strlen(s) + 1, s);
+}
+void SSD::SetPrice(double pr2) {
+	if (pr2 <= 0.0) {
+		cout << "The value of the machine is greater than 0!" << endl;
+	}
+	else {
+		price = pr2;
+	}
 }

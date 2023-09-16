@@ -1,65 +1,96 @@
+#include <iostream>
 #include "RAM.h"
-#include<iostream>
 using namespace std;
-
 
 RAM::RAM()
 {
-	model = nullptr;
+	name = nullptr;
+	type = nullptr;
+	speed = nullptr;
 	price = 0.0;
+	cout << "Constructor by default\n";
 }
-
-RAM::RAM(const char* m, double pr)
+RAM::RAM(const char* n, const char* t, const char* s, double pr4)
 {
-	this->model = new char[strlen(m) + 1];
-	strcpy_s(this->model, strlen(m) + 1, m);
-
-	this->price = pr;
+	name = new char[strlen(n) + 1];
+	strcpy_s(name, strlen(n) + 1, n);
+	type = new char[strlen(t) + 1];
+	strcpy_s(type, strlen(t) + 1, t);
+	speed = new char[strlen(s) + 1];
+	strcpy_s(speed, strlen(s) + 1, s);
+	price = pr4;
 }
-
-RAM::~RAM()
+RAM::RAM(const RAM& obj4)
 {
-	delete[]this->model;
+	name = new char[strlen(obj4.name) + 1];
+	strcpy_s(name, strlen(obj4.name) + 1, obj4.name);
+	type = new char[strlen(obj4.type) + 1];
+	strcpy_s(type, strlen(obj4.type) + 1, obj4.type);
+	speed = new char[strlen(obj4.speed) + 1];
+	strcpy_s(speed, strlen(obj4.speed) + 1, obj4.speed);
+	price = obj4.price;
 }
-
-void RAM::Input()
-{
-	cout << endl;
-	cout << "Enter RAM model: ";
-	cin >> model;
-	cout << endl;
-	cout << "Enter RAM price: ";
-	cin >> price;
-}
-
 void RAM::Print()
 {
-	cout << endl;
-	cout << "Model - " << model << endl;
-	cout << "Price - " << price << endl;
+	cout << "Name: " << name << "\tType: " << type << "\tSpeed: " << speed << "\tPrice: " << price << endl;
+}
+RAM::~RAM()
+{
+	delete[] name;
+	delete[] type;
+	delete[] speed;
+	cout << "Destructor\n";
 }
 
-char* RAM::GetModel()
+char* RAM::GetName() const
 {
-	return model;
+	return name;
 }
-
-double RAM::GetPrice()
+char* RAM::GetType() const
 {
-	return 0.0;
+	return type;
 }
-
-void RAM::SetModel(const char* m)
+char* RAM::GetSpeed() const
 {
-	if (model != nullptr)
-	{
-		cout << model << "... delete\n";
-		delete[]model;
+	return speed;
+}
+double RAM::GetPrice() const
+{
+	return price;
+}
+void RAM::SetName(char* n)
+{
+	if (name != nullptr) {
+		cout << name << "...delete\n";
+		delete[] name;
 	}
-	this->model = new char[strlen(m) + 1];
-	strcpy_s(model, strlen(m) + 1, m);
+	name = new char[strlen(n) + 1];
+	strcpy_s(name, strlen(n) + 1, n);
 }
-
-void RAM::SetPrice(double pr)
+void RAM::SetType(char* t)
 {
+	if (type != nullptr) {
+		cout << type << "...delete\n";
+		delete[] type;
+	}
+	type = new char[strlen(t) + 1];
+	strcpy_s(name, strlen(t) + 1, t);
+}
+void RAM::SetSpeed(char* s)
+{
+	if (speed != nullptr) {
+		cout << speed << "...delete\n";
+		delete[] speed;
+	}
+	speed = new char[strlen(s) + 1];
+	strcpy_s(speed, strlen(s) + 1, s);
+}
+void RAM::SetPrice(double pr4)
+{
+	if (pr4 <= 0.0) {
+		cout << "The value of the machine is greater than 0!" << endl;
+	}
+	else {
+		price = pr4;
+	}
 }

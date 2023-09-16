@@ -1,29 +1,21 @@
 #pragma once
 class SSD
 {
-    char* model;
-    double price;
-
+private:
+	char* name;
+	char* speed;
+	double price;
 public:
+	SSD();
+	SSD(const char* n, const char* s, double pr2);
+	SSD(const SSD& obj2);
+	void Print();
+	~SSD();
 
-    SSD();
-    SSD(const char* m, double pr);
-    SSD(const SSD& ssd)
-    {
-        model = new char[strlen(ssd.model) + 1];
-        strcpy_s(model, strlen(ssd.model) + 1, ssd.model);
-        price = ssd.price;
-    }
-    ~SSD();
-    void Input();
-    void Print();
-
-
-    char* GetModel();
-    double GetPrice();
-
-
-    void SetModel(const char* m);
-    void SetPrice(double pr);
+	char* GetName() const;
+	char* GetSpeed() const;
+	double GetPrice() const;
+	void SetName(char* n);
+	void SetSpeed(char* s);
+	void SetPrice(double pr2);
 };
-

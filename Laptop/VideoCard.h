@@ -1,29 +1,27 @@
 #pragma once
 class VideoCard
 {
-    char* model;
-    double price;
-
+private:
+	char* name;
+	char* model;
+	int power;
+	int year;
+	double price;
 public:
+	VideoCard();
+	VideoCard(const char* n, const char* m, int p, int y, double pr3);
+	VideoCard(const VideoCard& obj3);
+	void Print();
+	~VideoCard();
 
-    VideoCard();
-    VideoCard(const char* m, double pr);
-    VideoCard(const VideoCard& vd)
-    {
-        model = new char[strlen(vd.model) + 1];
-        strcpy_s(model, strlen(vd.model) + 1, vd.model);
-        price = vd.price;
-    }
-    ~VideoCard();
-    void Input();
-    void Print();
-
-
-    char* GetModel();
-    double GetPrice();
-
-
-    void SetModel(const char* m);
-    void SetPrice(double pr);
+	char* GetName() const;
+	char* GetModel() const;
+	int GetPower() const;
+	int GetYear() const;
+	double GetPrice() const;
+	void SetName(char* n);
+	void SetModel(char* m);
+	void SetPower(int p);
+	void SetYear(int y);
+	void SetPrice(double pr3);
 };
-

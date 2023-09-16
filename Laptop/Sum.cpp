@@ -3,6 +3,7 @@
 #include <iostream>
 
 using namespace std;
+/*
 
 double Sum::s_AllSum = 0;
 
@@ -27,3 +28,5 @@ void::InfoAllSum()
 {
 	//cout << "All Sum: " << a_sum << endl;
 }
+
+*/
